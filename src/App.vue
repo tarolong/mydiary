@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrap">
+   <diary-header></diary-header>
+   <diary-input></diary-input>
+   <diary-List></diary-List>
+   <diary-footer></diary-footer>
+  </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
+import DiaryHeader from '@/components/DiaryHeader.vue';
+import DiaryInput from '@/components/DiaryInput.vue';
+import DiaryList from '@/components/DiaryList.vue';
+import DiaryFooter from '@/components/DiaryFooter.vue';
+
+export default {  
   components: {
-    HelloWorld
+    DiaryHeader,
+    DiaryInput,
+    DiaryList,
+    DiaryFooter
+  },
+  setup() {
+    return {
+    }
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
