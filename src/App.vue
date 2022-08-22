@@ -27,5 +27,48 @@ export default {
 }
 </script>
 <style>
+  @charset "utf-8";
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  ul, li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  input {
+    border-style: groove;
+    width: 80%;
+  }
 
+  button {
+    border-style: groove
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    text-align: center;
+    background-color: #f6f6f6;
+  }
+
+  .shadow {
+    box-shadow: 5px 10px 10px rgba(0 , 0, 0, 0.03);
+  }
+
+  .wrap {
+    position: relative;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
 </style>
