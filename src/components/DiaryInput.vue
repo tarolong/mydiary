@@ -18,10 +18,14 @@ export default {
         const newItem = ref('');
 
         const addItem = () => {
-            console.log(newItem.value);
+            // console.log(newItem.value);
+            if(newItem.value !== '') {
 
-            // 저장하는 로직 작성 필요
-            localStorage.setItem(newItem.value, newItem.value);
+                let obj = {completed: false, item: newItem.value}
+                // 저장하는 로직 작성 필요
+                // localStorage.setItem(newItem.value, obj);
+                localStorage.setItem(newItem.value, JSON.stringify(obj));
+            }
 
             clearInput();
         };
