@@ -12,14 +12,13 @@ import DiaryHeader from '@/components/DiaryHeader.vue';
 import DiaryInput from '@/components/DiaryInput.vue';
 import DiaryList from '@/components/DiaryList.vue';
 import DiaryFooter from '@/components/DiaryFooter.vue';
-
 import { reactive } from 'vue';
 export default {  
   components: {
     DiaryHeader,
     DiaryInput,
     DiaryList,
-    DiaryFooter
+    DiaryFooter,
   },
   setup() {
     const diaryItemArr = reactive([]);
