@@ -1,7 +1,7 @@
 <template>
     <div>
        <ul>
-            <li v-for="(item, index) in diaryItemArr" :key="index" class="shadow">
+            <li v-for="(item, index) in propsdata" :key="index" class="shadow">
                 <i class="checkBtn fas fa-check" :class={checkBtnCompleted:item.completed} @click="toggleComplete(item, index)"></i>
                 <span :class="{textComplted:item.completed}">{{item.item}}</span>
                 <span class="removeBtn" @click="removeDiary(item, index)">
@@ -12,37 +12,24 @@
     </div>
 </template>
 <script>
-import { reactive } from 'vue';
 export default {
+    props: ['propsdata'],
     setup() {
 
-        const diaryItemArr = reactive([]);
-        if(localStorage.length > 0) {
-            for(let i = 0; i < localStorage.length; i++){
+        // const removeDiary = (_item, _index) => {
+        //     localStorage.removeItem(_item.item);
+        //     diaryItemArr.splice(_index, 1);
+        // }
 
-                let obj = localStorage.getItem(localStorage.key(i));
-                // console.log(temp);
-                obj = JSON.parse(obj);
-                // console.log(temp);                
-                diaryItemArr.push(obj);                
-            }
-        }
-
-        const removeDiary = (_item, _index) => {
-            localStorage.removeItem(_item.item);
-            diaryItemArr.splice(_index, 1);
-        }
-
-        const toggleComplete = (_item) => {
-            _item.completed = !_item.completed;
-            localStorage.removeItem(_item.item);
-            localStorage.setItem(_item.item, JSON.stringify(_item))
-        }
+        // const toggleComplete = (_item) => {
+        //     _item.completed = !_item.completed;
+        //     localStorage.removeItem(_item.item);
+        //     localStorage.setItem(_item.item, JSON.stringify(_item))
+        // }
 
         return {
-            diaryItemArr,
-            removeDiary,
-            toggleComplete
+            // removeDiary,
+            // toggleComplete
         }
     }
 }

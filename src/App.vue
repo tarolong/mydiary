@@ -1,8 +1,8 @@
 <template>
   <div class="wrap">
    <diary-header></diary-header>
-   <diary-input></diary-input>
-   <diary-List></diary-List>
+   <diary-input @additem="addOneItem"></diary-input>
+   <diary-List :propsdata="diaryItemArr"></diary-List>
    <diary-footer></diary-footer>
   </div>
 </template>
@@ -13,6 +13,7 @@ import DiaryInput from '@/components/DiaryInput.vue';
 import DiaryList from '@/components/DiaryList.vue';
 import DiaryFooter from '@/components/DiaryFooter.vue';
 
+import { reactive } from 'vue';
 export default {  
   components: {
     DiaryHeader,
@@ -21,7 +22,27 @@ export default {
     DiaryFooter
   },
   setup() {
+    const diaryItemArr = reactive([]);
+    if(localStorage.length > 0) {
+        for(let i = 0; i < localStorage.length; i++){
+
+            let obj = localStorage.getItem(localStorage.key(i));
+            // console.log(temp);
+            obj = JSON.parse(obj);
+            // console.log(temp);                
+            diaryItemArr.push(obj);                
+        }
+    }
+
+    const addOneItem = (item) => {
+      let obj = {completed: false, item: item}
+      localStorage.setItem(item, JSON.stringify(obj));           
+      diaryItemArr.push(obj);    
+    }
+
     return {
+      diaryItemArr,
+      addOneItem
     }
   }
 }
