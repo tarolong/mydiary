@@ -14,22 +14,17 @@
 <script>
 export default {
     props: ['propsdata'],
-    setup() {
-
-        // const removeDiary = (_item, _index) => {
-        //     localStorage.removeItem(_item.item);
-        //     diaryItemArr.splice(_index, 1);
-        // }
-
-        // const toggleComplete = (_item) => {
-        //     _item.completed = !_item.completed;
-        //     localStorage.removeItem(_item.item);
-        //     localStorage.setItem(_item.item, JSON.stringify(_item))
-        // }
+    setup(props, context) {
+        const removeDiary = (_item, _index) => {
+            context.emit('removeDiary', _item, _index );            
+        }
+        const toggleComplete = (_item, _index) => {
+            context.emit('toggleComplete', _item, _index );          
+        }
 
         return {
-            // removeDiary,
-            // toggleComplete
+            removeDiary,
+            toggleComplete
         }
     }
 }

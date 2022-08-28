@@ -18,7 +18,6 @@ export default {
         const newItem = ref('');
 
         const addItem = () => {
-            // console.log(newItem.value);
             if(newItem.value !== '') {
                 context.emit('additem', newItem.value)
             }

@@ -5,10 +5,10 @@
 </template>
 <script>
 export default {
-    setup() {
+    setup(props, context) {
 
         const clearDiary = () => {
-            localStorage.clear();
+            context.emit('clearDiary');
         }
         return {   
             clearDiary         
