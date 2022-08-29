@@ -1,6 +1,7 @@
 <template>
     <div>
-       <ul>
+        <TransitionGroup name="list" tag="ul">
+       <!-- <ul>             -->
             <li v-for="(item, index) in propsdata" :key="index" class="shadow">
                 <i class="checkBtn fas fa-check" :class={checkBtnCompleted:item.completed} @click="toggleComplete(item, index)"></i>
                 <span :class="{textComplted:item.completed}">{{item.item}}</span>
@@ -8,10 +9,12 @@
                      <i class="fas fa-trash addBtn"></i>
                 </span>
             </li>
-        </ul>
+        <!-- </ul> -->
+        </TransitionGroup>
     </div>
 </template>
 <script>
+    
 export default {
     props: ['propsdata'],
     setup(props, context) {
@@ -60,6 +63,17 @@ li {
 .textComplted {
     text-decoration: line-through;
     color:#b3adad;
+}
+
+/* 트랜지션 효과 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
     
 </style>

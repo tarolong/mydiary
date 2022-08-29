@@ -31,6 +31,7 @@ export default {
     }
 
     const addOneItem = (item) => {
+      console.log(item);
       let obj = {completed: false, item: item}
       localStorage.setItem(item, JSON.stringify(obj));           
       diaryItemArr.push(obj);    

@@ -35,9 +35,9 @@ export default {
 
         const newItem = ref('');
         const addItem = () => {
-            // console.log(newItem.value);
+            console.log(newItem.value);
             if(newItem.value !== '') {
-                context.emit('additem', newItem)
+                context.emit('additem', newItem.value)
             }else {
                 showModal.value = true;
             }
