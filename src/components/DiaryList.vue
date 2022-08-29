@@ -1,33 +1,38 @@
 <template>
     <div>
         <TransitionGroup name="list" tag="ul">
-       <!-- <ul>             -->
-            <li v-for="(item, index) in propsdata" :key="index" class="shadow">
+            <li v-for="(item, index) in items" :key="index" class="shadow">
                 <i class="checkBtn fas fa-check" :class={checkBtnCompleted:item.completed} @click="toggleComplete(item, index)"></i>
                 <span :class="{textComplted:item.completed}">{{item.item}}</span>
                 <span class="removeBtn" @click="removeDiary(item, index)">
                      <i class="fas fa-trash addBtn"></i>
                 </span>
             </li>
-        <!-- </ul> -->
         </TransitionGroup>
     </div>
 </template>
 <script>
-    
+import {ref} from 'vue'
+import  { useStore } from 'vuex'
 export default {
-    props: ['propsdata'],
-    setup(props, context) {
+
+    setup() {
+        const store = useStore();
+        const items = ref([]);
+        items.value = store.state.diaryItemArr;
         const removeDiary = (_item, _index) => {
-            context.emit('removeDiary', _item, _index );            
+            // context.emit('removeDiary', _item, _index );  
+            store.commit('REMOVE_DIARY', {item:_item, index:_index});          
         }
         const toggleComplete = (_item, _index) => {
-            context.emit('toggleComplete', _item, _index );          
+            // context.emit('toggleComplete', _item, _index );  
+            store.commit('TOGGGLE_COMPLETE', {item:_item, index:_index});          
         }
 
         return {
             removeDiary,
-            toggleComplete
+            toggleComplete,
+            items
         }
     }
 }

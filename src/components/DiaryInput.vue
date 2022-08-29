@@ -24,6 +24,7 @@
 
 <script>
 import { ref } from 'vue';
+import  { useStore } from 'vuex'
 import ModalVue from '@/components/common/ModalVue.vue';
 
 export default {
@@ -31,13 +32,13 @@ export default {
         ModalVue
     },
 
-    setup(props, context) {
-
+    setup() {
+        const store = useStore();
         const newItem = ref('');
         const addItem = () => {
-            console.log(newItem.value);
             if(newItem.value !== '') {
-                context.emit('additem', newItem.value)
+                // context.emit('additem', newItem.value)
+                store.commit('ADD_ONE_ITEM', newItem.value);
             }else {
                 showModal.value = true;
             }

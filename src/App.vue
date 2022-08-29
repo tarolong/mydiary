@@ -1,9 +1,9 @@
 <template>
   <div class="wrap">
    <diary-header></diary-header>
-   <diary-input @additem="addOneItem"></diary-input>
-   <diary-List :propsdata="diaryItemArr" @removeDiary="removeDiary" @toggleComplete="toggleComplete"></diary-List>
-   <diary-footer @clearDiary="clearDiary"></diary-footer>
+   <diary-input></diary-input>
+   <diary-List></diary-List>
+   <diary-footer></diary-footer>
   </div>
 </template>
 <script>
@@ -12,7 +12,7 @@ import DiaryHeader from '@/components/DiaryHeader.vue';
 import DiaryInput from '@/components/DiaryInput.vue';
 import DiaryList from '@/components/DiaryList.vue';
 import DiaryFooter from '@/components/DiaryFooter.vue';
-import { reactive } from 'vue';
+// import { reactive } from 'vue';
 export default {  
   components: {
     DiaryHeader,
@@ -20,46 +20,8 @@ export default {
     DiaryList,
     DiaryFooter,
   },
-  setup() {
-    const diaryItemArr = reactive([]);
-    if(localStorage.length > 0) {
-        for(let i = 0; i < localStorage.length; i++){
-            let obj = localStorage.getItem(localStorage.key(i));            
-            obj = JSON.parse(obj);              
-            diaryItemArr.push(obj);                
-        }
-    }
-
-    const addOneItem = (item) => {
-      console.log(item);
-      let obj = {completed: false, item: item}
-      localStorage.setItem(item, JSON.stringify(obj));           
-      diaryItemArr.push(obj);    
-    }
-
-    const removeDiary = (_item, _index) => {
-        localStorage.removeItem(_item.item);
-        diaryItemArr.splice(_index, 1);
-    }
-
-    const toggleComplete = (_item, _index) => {        
-          // _item.completed = !_item.completed;
-          diaryItemArr[_index].completed =! diaryItemArr[_index].completed 
-          localStorage.removeItem(_item.item);
-          localStorage.setItem(_item.item, JSON.stringify(_item))
-      }
-    
-      const clearDiary = () => {
-        diaryItemArr.splice(0);
-        localStorage.clear();
-      }
-
+  setup() {    
     return {
-      diaryItemArr,
-      addOneItem,
-      removeDiary,
-      toggleComplete,
-      clearDiary
     }
   }
 }

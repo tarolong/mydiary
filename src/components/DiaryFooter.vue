@@ -4,11 +4,13 @@
     </div>
 </template>
 <script>
+    import  { useStore } from 'vuex'
 export default {
-    setup(props, context) {
-
+    setup() {
+        const store = useStore();
         const clearDiary = () => {
-            context.emit('clearDiary');
+            // context.emit('clearDiary');
+            store.commit('CLEAR_DIARY');  
         }
         return {   
             clearDiary         

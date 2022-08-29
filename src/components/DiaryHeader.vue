@@ -1,14 +1,24 @@
 <template>
     <header>
         <h1>
-            My Diary Header
+            <!-- My Diary Header -->
+            {{title}}
         </h1>
     </header>
 </template>
 
 <script>
+import {ref} from 'vue'
+import  { useStore } from 'vuex'
 export default {
-    
+    setup() {
+        const title = ref('');
+        const stroe = useStore();
+        title.value = stroe.state.headerText;
+        return {    
+            title        
+        }
+    }
 }
 </script>
 
