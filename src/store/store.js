@@ -40,6 +40,19 @@ export default createStore({
             localStorage.clear();
         }
     },
-    actions: {},
+    actions: {
+        fetchAddItem(context, item) {
+            context.commit('ADD_ONE_ITEM', item);
+        },
+        fetchRemoveItem({commit},data) {
+            commit('REMOVE_DIARY', data);
+        },
+        fetchToggleItem({commit},data) {
+           commit('TOGGGLE_COMPLETE', data);
+        },
+        fetchClearAll({commit}) {
+           commit('CLEAR_DIARY');
+        },
+    },
     getters: {}
 });

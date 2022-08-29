@@ -9,8 +9,7 @@ export default {
     setup() {
         const store = useStore();
         const clearDiary = () => {
-            // context.emit('clearDiary');
-            store.commit('CLEAR_DIARY');  
+            store.dispatch('fetchClearAll');
         }
         return {   
             clearDiary         

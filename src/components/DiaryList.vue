@@ -21,12 +21,10 @@ export default {
         const items = ref([]);
         items.value = store.state.diaryItemArr;
         const removeDiary = (_item, _index) => {
-            // context.emit('removeDiary', _item, _index );  
-            store.commit('REMOVE_DIARY', {item:_item, index:_index});          
+            store.dispatch('fetchRemoveItem', {item:_item, index:_index});        
         }
-        const toggleComplete = (_item, _index) => {
-            // context.emit('toggleComplete', _item, _index );  
-            store.commit('TOGGGLE_COMPLETE', {item:_item, index:_index});          
+        const toggleComplete = (_item, _index) => { 
+            store.dispatch('fetchToggleItem', {item:_item, index:_index});        
         }
 
         return {

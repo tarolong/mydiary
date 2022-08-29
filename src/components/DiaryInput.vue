@@ -37,8 +37,7 @@ export default {
         const newItem = ref('');
         const addItem = () => {
             if(newItem.value !== '') {
-                // context.emit('additem', newItem.value)
-                store.commit('ADD_ONE_ITEM', newItem.value);
+                store.dispatch('fetchAddItem', newItem.value);
             }else {
                 showModal.value = true;
             }
