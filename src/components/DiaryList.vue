@@ -12,14 +12,13 @@
     </div>
 </template>
 <script>
-import {ref} from 'vue'
+import {computed} from 'vue'
 import  { useStore } from 'vuex'
 export default {
 
     setup() {
         const store = useStore();
-        const items = ref([]);
-        items.value = store.state.diaryItemArr;
+        const items = computed( () => store.getters.getDiaryItemsAll );
         const removeDiary = (_item, _index) => {
             store.dispatch('fetchRemoveItem', {item:_item, index:_index});        
         }

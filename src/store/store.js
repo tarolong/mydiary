@@ -54,5 +54,9 @@ export default createStore({
            commit('CLEAR_DIARY');
         },
     },
-    getters: {}
+    getters: {
+        getDiaryItemsAll(state) {
+            return state.diaryItemArr
+        }
+    }
 });
